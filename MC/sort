@@ -1,0 +1,42 @@
+./fileop.c:    p->count += EnumZipFiles(_CurTab->zipInfo, pathbuf, _ZipDirSize, (int)p) + 0x10000;
+./fileop.c:    p->count += Enum7ZFiles(_CurTab->zipInfo, pathbuf, _7ZDirSize, (int)p) + 0x10000;
+./fileop.c: if (ind < _CurTab->ccFiles && res) // Только если есть куда идти вниз
+./fileop.c:  fn_add(&buffer, param, file->ftype, pname, pathbuf, IsInZip() ? _CurTab->zipInfo->szZipPath : NULL, file->sname);
+./fileop.c:   if (iszip) dzip = zipOpen2 (_CurTab->zipInfo->szZipPath, APPEND_STATUS_ADDINZIP, NULL, NULL);
+./fileop.c:        sprintf(pathbuf, _s_s, _CurTab->zipInfo->szCurDir, sname);
+./fileop.c:     strcpy(pathbuf_fn, _CurTab->zipInfo->szCurDir);
+./fileop.c:     strcpy(zippathbuf, _CurTab->zipInfo->szZipPath);
+./fileop.c:     strcpy(_CurTab->zipInfo->szCurDir, pathbuf_fn);
+./gui.c:        if(strlen(_CurTab->zipInfo->szCurDir)==0)
+./gui.c:          str_2ws(guibuf, strrchr(_CurTab->zipInfo->szCurDir,'\\')+1, MAX_PATH);        
+./krnl.c:  strcpy(lpname, GetFileName(_CurTab->zipInfo->szZipPath));
+./krnl.c:    strcpy(lpname, GetFileName(_CurTab->zipInfo->szZipPath));
+./krnl.c:   char* path = IsInArchive() ? _CurTab->zipInfo->szCurDir : _CurPath;
+./krnl.c: ws_2str(wsname, _CurTab->szFilter, MAX_PATH);
+./krnl.c: if (strcmp(_CurTab->szFilter, def_filter) == 0)
+./krnl.c:  _CurTab->szFilter[0] = 0;
+./krnl.c:  if (_CurTab->szFilter[0])
+./krnl.c:   str_2ws(wsbuf, _CurTab->szFilter, MAX_PATH);
+./krnl.c:     strcpy(zippathbuf, _CurTab->zipInfo->szZipPath);
+./krnl.c: _CurTab->sort=(_CurTab->sort & STD_MASK) | ST_NAME;
+./krnl.c: _CurTab->sort=(_CurTab->sort & STD_MASK) | ST_EXT;
+./krnl.c: _CurTab->sort=(_CurTab->sort & STD_MASK) | ST_SIZE;
+./krnl.c: _CurTab->sort=(_CurTab->sort & STD_MASK) | ST_DATE;
+./krnl.c: int srt = (_CurTab->sort & STV_MASK);
+./krnl.c: _CurTab->sort=(_CurTab->sort & STD_MASK) | srt;
+./krnl.c: _CurTab->sort=(_CurTab->sort & STV_MASK) | (~_CurTab->sort & STD_MASK);
+./krnl.c:   sprintf(pathbuf, _s_s, _CurTab->zipInfo->szCurDir, sfile);
+./krnl.c:        sprintf(pathbuf, "ZIP:%s\\", _CurTab->zipInfo->szCurDir);
+./krnl.c:        sprintf(pathbuf, "7Z:%s\\", _CurTab->zipInfo->szCurDir);
+./newmenu.c:  if ((flag==4 && _CurTab->sort>=ST_REVERS) || (_CurTab->sort>=ST_REVERS && _CurTab->sort==flag+ST_REVERS) || (_CurTab->sort==flag))
+./newmenu.c:  if (flag==4 && _CurTab->sort>=ST_REVERS)
+./newmenu.c:	sprintf(msg, "%d", _CurTab->sort);
+./ziplib.c:  fn_add(&buffer, param, file->ftype, pname, pathbuf, IsInZip() ? _CurTab->zipInfo->szZipPath : NULL, file->sname);
+./ziplib.c:    EnumZipFiles(_CurTab->zipInfo, pathbuf, M_ZipDel, param);
+./ziplib.c:  strcpy(pathbuf_fn, _CurTab->zipInfo->szCurDir);
+./ziplib.c:    strcpy(_CurTab->zipInfo->szCurDir, pathbuf_fn);
+./mc.h:#define _CurCount _CurTab->ccFiles
+./mc.h:#define _CurDrv   _CurTab->CurDrv
+./mc.h:#define _CurPath  _CurTab->szDirs[_CurDrv]
+./mc.h:#define _CurIndex _CurTab->iIndex[_CurDrv]
+./mc.h:#define _CurBase  _CurTab->iBase[_CurDrv]
