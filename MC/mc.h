@@ -536,8 +536,6 @@ void incprogrsp(int inc);
 void endprogr();
 void endprogrsp();
 
-void InitAllMD();
-
 extern unsigned int MAINCSM_ID;
 
 void ResetAutoExit();

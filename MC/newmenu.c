@@ -1,5 +1,5 @@
 #include <swilib.h>
-#include <libsui.h>
+#include "rect_patcher.h"
 #include "mc.h"
 #include "mui.h"
 #include "krnl.h"

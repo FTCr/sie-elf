@@ -18,7 +18,7 @@ LDFLAGS = -L../libs -marmelf -z max-page-size=1 --defsym __ex=0 --gc-section -s
 LIB_LDFLAGS = ${LDFLAGS} -shared -Bsymbolic -Bsymbolic-function -soname=${FNAME}
 ELF_LDFLAGS = ${LDFLAGS} -pie 
 
-LIBS = -lgcc -lcrt -lcrt_helper -lsui
+LIBS = -lgcc -lcrt -lcrt_helper
 
 CFLAGS += -D__NO_LIBC
 

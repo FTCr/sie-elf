@@ -1,5 +1,5 @@
 #include <swilib.h>
-#include <libsui.h>
+#include "rect_patcher.h"
 #include "mc.h"
 #include "mui.h"
 #include "newmenu.h"
@@ -197,7 +197,19 @@ void OnRedraw(MAIN_GUI *data) // OnRedraw
  InitScr();
  FillInfo();
  InitCS();
- InitAllMD();
+ extern HEADER_DESC txt_inp_hdr;
+ extern INPUTDIA_DESC txt_inp_desc;
+
+ patch_header(&txt_inp_hdr);
+ patch_input(&txt_inp_desc);
+ txt_inp_desc.rc.y+=15;
+ txt_inp_desc.rc.x+=5;
+ 
+ extern HEADER_DESC md5_inp_hdr;
+ extern INPUTDIA_DESC md5_inp_desc;
+ 
+ patch_header(&md5_inp_hdr);
+ patch_input(&md5_inp_desc);
  if (CONFIG_LOAD_MUI)
   LoadMUI(NULL);
  else
