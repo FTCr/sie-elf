@@ -3,9 +3,9 @@
 
 #include "fn_list.h"
 #include "exts.h"
-#include "../zlib/zlib.h"
-#include "../zlib/minizip/unzip.h"
-#include "../zlib/minizip/zip.h"
+#include "zlib/zlib.h"
+#include "zlib/minizip/unzip.h"
+#include "zlib/minizip/zip.h"
 
 #include "7zslib.h"
 #include "arch.h"

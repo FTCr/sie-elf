@@ -1,10 +1,10 @@
 #ifndef _ARCH_H
 #define _ARCH_H
 
-#include "../7z/7zHeader.h"
-#include "../7z/7zCrc.h"
-#include "../7z/7zIn.h"
-#include "../7z/7zExtract.h"
+#include "7z/7zHeader.h"
+#include "7z/7zCrc.h"
+#include "7z/7zIn.h"
+#include "7z/7zExtract.h"
 
 #define MAX_PATH_INZIP  (256)
 
