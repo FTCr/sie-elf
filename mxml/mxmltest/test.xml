@@ -1,0 +1,11 @@
+<tree>
+		<node1>NODE1</node1>
+		<node2>NODE2</node2>
+		<subtree>
+			<node3>NODE3</node3>
+			<node4>NODE4</node4>
+			<subtree2>
+				<node5>NODE5</node5>
+			</subtree2>
+		</subtree>
+</tree>
