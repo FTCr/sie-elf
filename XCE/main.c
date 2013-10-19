@@ -160,6 +160,30 @@ static int OnKey(GUI *gui, GUI_MSG *msg)
 	INPUT_GUI **g = EDIT_GetUserPointer(gui);
 	int i = EDIT_GetFocus(gui) / 2 -1;
 	ITEM *item= &((*g)->items[i]);
+	
+	if (style == KEY_DOWN)
+	{
+		if (key == DOWN_BUTTON || key == UP_BUTTON || key == LEFT_SOFT)
+		{
+			if (item->type == TAG_INTEGER)
+			{
+				EDIT_ExtractFocusedControl(gui, &ec);
+				if (ec.pWS->wsbody[0] == 0)
+				{
+					str_2ws(ec.pWS, "0", 1);
+				}
+			}
+			else if (item->type == TAG_STRING)
+			{
+				EDIT_ExtractFocusedControl(gui, &ec);
+				if (ec.pWS->wsbody[0] == 0)
+				{
+					str_2ws(ec.pWS, "NULL", 4);
+				}
+			}
+		}
+	}
+	
 	if (msg->keys == E_BUTTON)
 	{
 		if (item->type == TAG_SUBMENU)
@@ -251,29 +275,6 @@ static int OnKey(GUI *gui, GUI_MSG *msg)
 		}
 		return 1;
 	}
-	
-	if (style == KEY_DOWN)
-	{
-		if (key == DOWN_BUTTON || key == UP_BUTTON)
-		{
-			if (item->type == TAG_INTEGER)
-			{
-				EDIT_ExtractFocusedControl(gui, &ec);
-				if (ec.pWS->wsbody[0] == 0)
-				{
-					str_2ws(ec.pWS, "0", 1);
-				}
-			}
-			else if (item->type == TAG_STRING)
-			{
-				EDIT_ExtractFocusedControl(gui, &ec);
-				if (ec.pWS->wsbody[0] == 0)
-				{
-					str_2ws(ec.pWS, "NULL", 4);
-				}
-			}
-		}
-	}
 	return 0;
 }
 
@@ -290,7 +291,7 @@ void SaveNodes(GUI *gui, INPUT_GUI **inp_gui)
 			if (item->type == TAG_INTEGER || item->type == TAG_STRING)
 			{
 				ExtractEditControl(gui, (i + 1) * 2, &ec);
-				ws_2utf8(ec.pWS, item->var, &utf8_l, ec.pWS->wsbody[0] * 2);
+				ws_2utf8(ec.pWS, item->var, &utf8_l, ec.pWS->wsbody[0] * 2 + 2);
 			}
 			else if (item->type == TAG_COMBOBOX)
 			{
