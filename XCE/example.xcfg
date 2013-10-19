@@ -1,0 +1,34 @@
+<config version="1.0">
+		<menu>
+			<submenu name="Integers">integers</submenu>
+			<submenu name="Coordinates">coordinates</submenu>
+			<submenu name="Comboboxes">comboboxes</submenu>
+			<submenu name="Keys">keys</submenu>
+			<color name="Color">10223064</color>
+			<string name="String">Hello world</string>
+			<checkbox name="Checkbox">false</checkbox>
+			<submenu name="Empty">empty</submenu>
+		</menu>
+		<integers>
+			<integer name="Integer 1">1</integer>
+			<integer name="Целое число 2">2</integer>
+		</integers>
+		<coordinates>
+			<position name="Position">100,50</position>
+			<rect name="Rect">10,20;140,100</rect>
+		</coordinates>
+		<comboboxes>
+			<combobox name="Combobox 1" item1="Item 1" item2="Item 2" item3="Item 3" item4="Item 4" n="4">1</combobox>
+			<combobox name="Список 2" item1="Пункт 1" item2="Пункт 2" item3="Пункт 3" item4="Пункт 4" n="4">2</combobox>
+		</comboboxes>
+		<keys>
+			<key name="Key 1">RIGHT_SOFT</key>
+			<key name="Key 2">LEFT_SOFT</key>
+			<key name="Key 2">GREEN_BUTTON</key>
+			<key name="Key 3">UP_BUTTON</key>
+			<key name="Key 4">DOWN_BUTTON</key>
+			<key name="Key 5">LEFT_BUTTON</key>
+			<key name="Key 6">RIGHT_BUTTON</key>
+			<key name="Key 7">ENTER_BUTTON</key>
+		</keys>
+</config>
