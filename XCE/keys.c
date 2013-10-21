@@ -170,7 +170,7 @@ void CreateKeyGUI(const char *hdr, const char *key)
 	AddEditControlToEditQend(eq, &ec, ma);
 	
 	str_2ws(keys->ws, " ", 1);
-	ConstructEditControl(&ec, ECT_HEADER, ECF_APPEND_EOL, keys->ws, keys->ws->wsbody[1]);
+	ConstructEditControl(&ec, ECT_HEADER, ECF_APPEND_EOL, keys->ws, keys->ws->wsbody[0]);
 	AddEditControlToEditQend(eq, &ec, ma);
 	
 	str_2ws(keys->ws, key, 31);
