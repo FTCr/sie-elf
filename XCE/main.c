@@ -161,29 +161,6 @@ static int OnKey(GUI *gui, GUI_MSG *msg)
 	int i = EDIT_GetFocus(gui) / 2 -1;
 	ITEM *item= &((*g)->items[i]);
 	
-	if (style == KEY_DOWN)
-	{
-		if (key == DOWN_BUTTON || key == UP_BUTTON || key == LEFT_SOFT)
-		{
-			if (item->type == TAG_INTEGER)
-			{
-				EDIT_ExtractFocusedControl(gui, &ec);
-				if (ec.pWS->wsbody[0] == 0)
-				{
-					str_2ws(ec.pWS, "0", 1);
-				}
-			}
-			else if (item->type == TAG_STRING)
-			{
-				EDIT_ExtractFocusedControl(gui, &ec);
-				if (ec.pWS->wsbody[0] == 0)
-				{
-					str_2ws(ec.pWS, "NULL", 4);
-				}
-			}
-		}
-	}
-	
 	if (msg->keys == E_BUTTON)
 	{
 		if (item->type == TAG_SUBMENU)
@@ -288,10 +265,21 @@ void SaveNodes(GUI *gui, INPUT_GUI **inp_gui)
 		{
 			EDITCONTROL ec;
 			int utf8_l;
-			if (item->type == TAG_INTEGER || item->type == TAG_STRING)
+			if (item->type == TAG_INTEGER)
 			{
 				ExtractEditControl(gui, (i + 1) * 2, &ec);
-				ws_2utf8(ec.pWS, item->var, &utf8_l, ec.pWS->wsbody[0] * 2 + 2);
+				if (ec.pWS->wsbody[0] == 0)
+					strcpy(item->var, "0");
+				else
+					ws_2utf8(ec.pWS, item->var, &utf8_l, ec.pWS->wsbody[0] * 2 + 2);
+			}
+			else if (item->type == TAG_STRING)
+			{
+				ExtractEditControl(gui, (i + 1) * 2, &ec);
+				if (ec.pWS->wsbody[0] == 0)
+					strcpy(item->var, "NULL");
+				else
+					ws_2utf8(ec.pWS, item->var, &utf8_l, ec.pWS->wsbody[0] * 2 + 2);
 			}
 			else if (item->type == TAG_COMBOBOX)
 			{
@@ -410,7 +398,10 @@ unsigned int CreateDialog(const char *node_name, INPUT_GUI **gui)
 				}
 				else if (tag_type == TAG_STRING)
 				{
-					utf8_2ws(ws, var, 127);
+					if (strcmp(var, "NULL") == 0)
+						str_2ws(ws, "", 1);
+					else
+						utf8_2ws(ws, var, 127);
 					ConstructEditControl(&ec, ECT_NORMAL_TEXT, ECF_APPEND_EOL, ws, 128);
 					SetFontToEditCOptions(&ec_options, 1);
 					CopyOptionsToEditControl(&ec, &ec_options);
