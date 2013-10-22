@@ -15,7 +15,7 @@ typedef struct
 extern void UpdateEditControl(const char *data, const int max_len, void (*callback_ws)(WSHDR *ws));
 
 #define WAIT_STR   "Press any key"
-#define NOWAIT_STR "Press ENTER_BUTTON or LEFT_SOFT to accept"
+#define NOWAIT_STR "Press Enter or Left softkey to accept"
 
 static HEADER_DESC header = {0, 0, 0, 0, 0, 0, LGP_NULL};
 
@@ -36,29 +36,29 @@ void GetKeyName(char *keyname, const int keycode)
 	if (keycode >= '0' && keycode <= '9')
 		sprintf(keyname, "%c", keycode);
 	else if (keycode == LEFT_SOFT)
-		strcpy(keyname, "LEFT_SOFT");
-	else if (keycode == GREEN_BUTTON)
-		strcpy(keyname, "GREEN_BUTTON");
+		strcpy(keyname, "Softkey left");
 	else if (keycode == RIGHT_SOFT)
-		strcpy(keyname, "RIGHT_SOFT");
-	else if (keycode == ENTER_BUTTON)
-		strcpy(keyname, "ENTER_BUTTON");
+		strcpy(keyname, "Softkey right");
+	else if (keycode == GREEN_BUTTON)
+		strcpy(keyname, "Green");
 	else if (keycode == UP_BUTTON)
-		strcpy(keyname, "UP_BUTTON");
+		strcpy(keyname, "Up");
 	else if (keycode == DOWN_BUTTON)
-		strcpy(keyname, "DOWN_BUTTON");
+		strcpy(keyname, "Down");
 	else if (keycode == LEFT_BUTTON)
-		strcpy(keyname, "LEFT_BUTTON");
+		strcpy(keyname, "Left");
 	else if (keycode == RIGHT_BUTTON)
-		strcpy(keyname, "RIGHT_BUTTON");
+		strcpy(keyname, "Right");
+	else if (keycode == ENTER_BUTTON)
+		strcpy(keyname, "Enter");
 	else if (keycode == '*')
 		strcpy(keyname, "*");
 	else if (keycode == '#')
 		strcpy(keyname, "#");
 	else if (keycode == VOL_UP_BUTTON)
-		strcpy(keyname, "VOL_UP_BUTTON");
+		strcpy(keyname, "Volume+");
 	else if (keycode == VOL_DOWN_BUTTON)
-		strcpy(keyname, "VOL_DOWN_BUTTON");
+		strcpy(keyname, "Volume-");
 }
 
 static int OnKey(GUI *gui, GUI_MSG *msg)

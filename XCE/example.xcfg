@@ -22,13 +22,15 @@
 			<combobox name="Список 2" item1="Пункт 1" item2="Пункт 2" item3="Пункт 3" item4="Пункт 4" n="4">2</combobox>
 		</comboboxes>
 		<keys>
-			<key name="Key 1">RIGHT_SOFT</key>
-			<key name="Key 2">LEFT_SOFT</key>
-			<key name="Key 2">GREEN_BUTTON</key>
-			<key name="Key 3">UP_BUTTON</key>
-			<key name="Key 4">DOWN_BUTTON</key>
-			<key name="Key 5">LEFT_BUTTON</key>
-			<key name="Key 6">RIGHT_BUTTON</key>
-			<key name="Key 7">ENTER_BUTTON</key>
+			<key name="Key 1">Softkey right</key>
+			<key name="Key 2">Softkey left</key>
+			<key name="Key 2">Green</key>
+			<key name="Key 3">Up</key>
+			<key name="Key 4">Down</key>
+			<key name="Key 5">Left</key>
+			<key name="Key 6">Right</key>
+			<key name="Key 7">Enter</key>
+			<key name="Key 8">Volume+</key>
+			<key name="Key 9">Volume-</key>
 		</keys>
 </config>
