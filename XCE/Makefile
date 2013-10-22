@@ -15,7 +15,7 @@ CFLAGS = -I../include -I inc -W -msoft-float -mlittle-endian -mcpu=arm926ej-s -m
 		-fno-exceptions -fno-builtin -fdata-sections -ffunction-sections -std=gnu99 -O2
 LDFLAGS = -L../libs -marmelf -z max-page-size=1 --defsym __ex=0 --gc-section -s -pie
 
-LIBS = -lgcc -lcrt -lcrt_helper -lc -lmxml
+LIBS = -lgcc -lcrt -lcrt_helper -lc -lmxml -lxce
 
 .PHONY = clean
 

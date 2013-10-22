@@ -1,12 +1,11 @@
 #include <swilib.h>
 #include <stdlib.h>
 #include <mxml.h>
+#include <libxce.h>
 #include "rect_patcher.h"
 #include "color.h"
 #include "coordinates.h"
 #include "keys.h"
-
-#define CONFIG_VERSION "1.0"
 
 #define TAG_INTEGER  0x01
 #define TAG_STRING   0x02
@@ -557,55 +556,15 @@ void UpdateCSMname(void)
 
 int main(const char *b_path, const char *f_path)
 {
-	if (f_path == NULL)
+	if (xce_load(&xml_tree, f_path, MXML_OPAQUE_CALLBACK))
 	{
-		SUBPROC((void*)kill_elf);
-		return EXIT_FAILURE;
+		strcpy(FILE_PATH, f_path);
+		//Create CSM
+		char dummy[sizeof(MAIN_CSM)];
+		wsprintf((WSHDR *)(&MAINCSM.maincsm_name), "XCE - %s", FILE_PATH);
+		LockSched();
+		CreateCSM(&MAINCSM.maincsm, dummy, 0);
+		UnlockSched();
 	}
-	
-	//load xml file
-	FILE *fp;
-	char str[128];
-	fp = fopen(f_path, "r");
-	if (fp == NULL)
-	{
-		sprintf(str, "Can't open file: %s", f_path);
-		MsgBoxError(1, (int)str);
-		SUBPROC((void*)kill_elf);
-		return EXIT_FAILURE;
-	}
-	xml_tree = mxmlLoadFile(NULL, fp, MXML_OPAQUE_CALLBACK);
-	fclose(fp);
-	if (xml_tree == NULL)
-	{
-		MsgBoxError(1, (int)"Can't load xml file");
-		SUBPROC((void*)kill_elf);
-		return EXIT_FAILURE;
-	}
-	
-	//check config version
-	char *ver = (char*)mxmlElementGetAttr(xml_tree, "version");
-	if (ver)
-	{
-		if (strcmp(ver, CONFIG_VERSION)) goto DESTROY;
-	}
-	else
-	{
-		DESTROY:
-			ShowMSG(1, (int)ver);
-			mxmlDelete(xml_tree);
-			SUBPROC((void*)kill_elf);
-			return EXIT_FAILURE;
-	}
-	
-	strcpy(FILE_PATH, f_path);
-	
-	//Create CSM
-	char dummy[sizeof(MAIN_CSM)];
-	wsprintf((WSHDR *)(&MAINCSM.maincsm_name), "XCE - %s", FILE_PATH);
-	LockSched();
-	CreateCSM(&MAINCSM.maincsm, dummy, 0);
-	UnlockSched();
-	
 	return EXIT_SUCCESS;
 }
