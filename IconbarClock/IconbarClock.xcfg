@@ -1,0 +1,9 @@
+<config version=1.0>
+	<menu>
+		<combobox name="Enable reconfigure message" item1="No" item2="Yes" n="2">2</combobox>
+		<string name="Png font path">2:\share\IconbarClock\</string>
+		<string name="Icons path">2:\share\icons\</string>
+		<integer name="Number temporary icon">9999</integer>
+		<integer name="Number empty icon">9998</integer>
+	</menu>
+</config>
