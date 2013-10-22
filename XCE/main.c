@@ -243,6 +243,7 @@ static int OnKey(GUI *gui, GUI_MSG *msg)
 			{
 				mxmlSaveFile(xml_tree, f, NULL);
 				fclose(f);
+				GBS_SendMessage(MMI_CEPID, MSG_RECONFIGURE_REQ, 0, FILE_PATH);
 			}
 			else
 			{
@@ -551,7 +552,7 @@ const struct
 
 void UpdateCSMname(void)
 {
-	wsprintf((WSHDR *)(&MAINCSM.maincsm_name), "CfgEdit2");
+	wsprintf((WSHDR *)(&MAINCSM.maincsm_name), "XCE");
 }
 
 int main(const char *b_path, const char *f_path)
