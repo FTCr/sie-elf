@@ -34,8 +34,7 @@ const char mypng[124]=
 
 int InitConfig(void)
 {
-	mxml_node_t *tree;
-	xce_load(&tree, CONF_PATH, MXML_OPAQUE_CALLBACK);
+	mxml_node_t *tree = xce_load(CONF_PATH);
 	
 	if (tree == NULL) return 0;
 	

@@ -3,7 +3,7 @@
 
 #define CONFIG_VERSION "1.0"
 
-int xce_load(mxml_node_t **node, const char *path, mxml_type_t (*callback)(mxml_node_t *));
+mxml_node_t* xce_load(const char *path);
 void xce_delete(mxml_node_t *tree);
 
 int xce_get_integer(mxml_node_t *tree, const char *name);

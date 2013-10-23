@@ -2,7 +2,7 @@
 #include <mxml.h>
 #include "libxce.h"
 
-int xce_load(mxml_node_t **node, const char *path, mxml_type_t (*callback)(mxml_node_t *))
+mxml_node_t* xce_load(const char *path)
 {
 	if (path)
 	{
@@ -13,36 +13,37 @@ int xce_load(mxml_node_t **node, const char *path, mxml_type_t (*callback)(mxml_
 		{
 			strcpy(msg, "Can't open file!");
 			MsgBoxError(1, (int)msg);
-			return 0;
+			return NULL;
 		}
-		tree = mxmlLoadFile(NULL, f, callback);
+		tree = mxmlLoadFile(NULL, f, MXML_OPAQUE_CALLBACK);
 		fclose(f);
 		if (tree == NULL)
 		{
 			strcpy(msg, "Can't load xml tree!");
 			MsgBoxError(1, (int)msg);
-			return 0;
+			return NULL;
 		}
 		const char *ver = mxmlElementGetAttr(tree, "version");
 		if (ver)
 		{
 			if (strcmp(ver, CONFIG_VERSION) == 0)
 			{
-				*node = tree;
-				return 1;
+				return tree;
 			}
 			else
 			{
 				strcpy(msg, "Version is not supported!");
 				MsgBoxError(1, (int)msg);
-				return 0;
+				mxmlDelete(tree);
+				return NULL;
 			}
 		}
 		else
 		{
 			strcpy(msg, "Version is not found!");
 			MsgBoxError(1, (int)msg);
-			return 0;
+			mxmlDelete(tree);
+			return NULL;
 		}
 	}
 }

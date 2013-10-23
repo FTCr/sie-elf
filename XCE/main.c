@@ -557,7 +557,8 @@ void UpdateCSMname(void)
 
 int main(const char *b_path, const char *f_path)
 {
-	if (xce_load(&xml_tree, f_path, MXML_OPAQUE_CALLBACK))
+	xml_tree = xce_load(f_path);
+	if (xml_tree)
 	{
 		strcpy(FILE_PATH, f_path);
 		//Create CSM
