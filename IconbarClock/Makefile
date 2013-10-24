@@ -23,8 +23,6 @@ LIB_LDFLAGS = ${LDFLAGS} -shared -Bsymbolic -Bsymbolic-function -soname=${FNAME}
 
 LIBS = -lgcc -lcrt -lcrt_helper -lxce -lc -lmxml
 
-CFLAGS += -D__NO_LIBC
-
 .PHONY = clean
 
 elf_elka: compile_elka link_elf
