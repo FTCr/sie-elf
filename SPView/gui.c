@@ -1,6 +1,7 @@
 #include <swilib.h>
 #include <stdlib.h>
 #include "rect_patcher.h"
+#include "png_cache.h"
 
 WSHDR *ws;
 int icon_id;
@@ -68,6 +69,12 @@ int OnKey(GUI *gui, GUI_MSG *msg)
 		{
 			if (icon_id != 9999) icon_id++;
 			UpdateGUI();
+		}
+		else if (key == '1')
+		{
+			clear_bitmap();
+			clear_cache();
+			ShowMSG(1, (int)"PNG cache cleaned!");
 		}
 	}
 	else if (style == LONG_PRESS)
